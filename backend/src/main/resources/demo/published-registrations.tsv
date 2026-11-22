@@ -1,0 +1,4 @@
+# Existing retained student history; restored only on an entirely empty demo database.
+# id	studentEmail	eventId	registeredAt	status
+121c98ac-0406-485b-9c12-7bf98729a724	etudiant@usms.ma	b0df2605-e78b-435d-a6be-a895dfa83ce3	2026-11-17T17:55:35.757887+00:00	CONFIRMEE
+2590d9ba-033a-42ee-89bb-49de9ba1aa13	etudiant@usms.ma	8c8a82c3-0c70-4aad-9944-551aa0c023ae	2026-11-17T23:15:29.599449+00:00	ANNULEE

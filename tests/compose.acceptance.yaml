@@ -1,0 +1,66 @@
+services:
+  database:
+    image: postgres:17-alpine
+    pull_policy: never
+    environment:
+      POSTGRES_DB: campus360
+      POSTGRES_USER: campus360
+      POSTGRES_PASSWORD: ${ACCEPTANCE_DB_PASSWORD:?Set ACCEPTANCE_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:25432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campus360 -d campus360"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  backend:
+    image: campus360-backend:latest
+    pull_policy: never
+    environment:
+      PORT: 8080
+      DB_URL: jdbc:postgresql://database:5432/campus360
+      DB_USER: campus360
+      DB_PASSWORD: ${ACCEPTANCE_DB_PASSWORD:?Set ACCEPTANCE_DB_PASSWORD}
+      DEMO_ACCOUNT_PASSWORD: ${CAMPUS360_TEST_PASSWORD:?Set CAMPUS360_TEST_PASSWORD}
+      SMTP_HOST: mail
+      SMTP_PORT: 1025
+      SMTP_AUTH: "false"
+      SMTP_STARTTLS: "false"
+      SPRING_PROFILES_ACTIVE: demo
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - acceptance_uploads:/app/uploads
+    ports:
+      - "127.0.0.1:18081:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+      mail:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/api/v1/health"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 20s
+  frontend:
+    image: campus360-frontend:latest
+    pull_policy: never
+    ports:
+      - "127.0.0.1:18080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+  mail:
+    image: axllent/mailpit:latest
+    pull_policy: never
+    ports:
+      - "127.0.0.1:18025:8025"
+      - "127.0.0.1:18026:1025"
+networks:
+  default:
+    driver: bridge
+volumes:
+  acceptance_uploads:

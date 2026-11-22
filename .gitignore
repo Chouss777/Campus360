@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+artifacts/
+backend/.local-maven/
+backend/target/
+backend/*.log
+backend/uploads/
+frontend/dist/
+frontend/node_modules/
+docker-build*.log
+docker-pull-*.log
+docker-start.log
+docker-restart.log

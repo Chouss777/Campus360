@@ -1,0 +1,6 @@
+# Existing published snapshot only, from the local 2026-11-20 backup; never sliding dates or drafts.
+# id	title	description	category	start	end	location	capacity	clubKey (empty for advertiser)
+b0df2605-e78b-435d-a6be-a895dfa83ce3	Atelier passé — Démonstration	Exemple pour le planning et l’historique.	Technologie	2026-11-14T13:00:00+00:00	2026-11-14T15:00:00+00:00	Campus USMS — Salle démo	30	khawarizmi
+8c8a82c3-0c70-4aad-9944-551aa0c023ae	Atelier web — Démonstration	Découvrez le développement web lors de cet atelier de démonstration.	Technologie	2026-11-20T13:00:00+00:00	2026-11-20T15:00:00+00:00	Campus USMS — Salle démo	30	khawarizmi
+1be81121-8a2a-4a72-a1ef-b8ff63d03b28	Rencontre culturelle — Démonstration	Échanges et découvertes culturelles sur le campus.	Culture	2026-11-22T13:00:00+00:00	2026-11-22T15:00:00+00:00	Campus USMS — Salle démo	30	beelite
+88f9df57-fd60-465a-bc86-a5dc40e99c91	Rencontre institutionnelle — Démonstration	Un événement publié par le service universitaire de démonstration.	Campus	2026-11-24T13:00:00+00:00	2026-11-24T15:00:00+00:00	Campus USMS — Salle démo	30

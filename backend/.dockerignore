@@ -1,0 +1,5 @@
+target
+.local-maven
+.git
+*.log
+uploads
